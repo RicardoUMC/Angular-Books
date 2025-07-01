@@ -1,1 +1,8 @@
-<p>books works!</p>
+<div>
+    <h2>Nuestra colección</h2>
+    <ul>
+        <ng-container *ngFor="let singleBook of books">
+            <app-book [book]="singleBook"></app-book>
+        </ng-container>
+    </ul>
+</div>

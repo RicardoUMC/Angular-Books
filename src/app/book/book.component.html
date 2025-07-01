@@ -1,0 +1,46 @@
+<li>
+  <div>
+    <div>
+      <img
+        [src]="book.portada_url"
+        [alt]="book.titulo"
+      />
+    </div>
+  </div>
+
+  <div>
+    <div>
+      <p>
+        {{ book.titulo | titlecase }}
+        <span>({{ book.edicion | titlecase }})</span>
+      </p>
+      <p>
+        Autor: <strong>{{ book.autor }}</strong>
+      </p>
+      <p>
+        Editorial: <strong>{{ book.editorial }}</strong>
+      </p>
+      <p>
+        {{ book.descripcion }}
+      </p>
+    </div>
+    <div>
+      <div>
+        <button *ngIf="!isInCollection">
+          Agregar a mis libros
+        </button>
+        <button *ngIf="isInCollection">
+          Quitar de mis libros
+        </button>
+      </div>
+      <div>
+        <button *ngIf="!isInWishlist">
+          Agregar a deseados
+        </button>
+        <button *ngIf="isInWishlist">
+          Quitar de deseados
+        </button>
+      </div>
+    </div>
+  </div>
+</li>

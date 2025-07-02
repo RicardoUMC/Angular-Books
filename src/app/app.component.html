@@ -20,7 +20,7 @@
         <a routerLink="login">Iniciar sesión</a>
       </div>
       <div>
-        <button>Cerrar sesión</button>
+        <button *ngIf="isAuthenticated" (click)="logout()">Cerrar sesión</button>
       </div>
     </div>
   </div>

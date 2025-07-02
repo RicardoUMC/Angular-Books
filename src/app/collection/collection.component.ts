@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../types/Book';
+import { CollectionService } from '../services/collection.service';
 
 @Component({
   selector: 'app-collection',
@@ -9,7 +10,17 @@ import { Book } from '../types/Book';
 export class CollectionComponent implements OnInit {
   books: Book[] = [];
 
-  constructor() {}
+constructor(private collectionService: CollectionService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.collectionService.get().subscribe({
+      next: (data) => {
+        this.books = data;
+      },
+
+      error: (err) => {
+        console.error('Error al obtener los libros:', err);
+      },
+    });
+  }
 }

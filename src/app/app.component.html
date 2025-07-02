@@ -14,10 +14,10 @@
         <a routerLink="wishlist">Mis deseados</a>
       </div>
       <div>
-        <a routerLink="register">Registrarse</a>
+        <a routerLink="register" *ngIf="!isAuthenticated">Registrarse</a>
       </div>
       <div>
-        <a routerLink="login">Iniciar sesión</a>
+        <a routerLink="login" *ngIf="!isAuthenticated">Iniciar sesión</a>
       </div>
       <div>
         <button *ngIf="isAuthenticated" (click)="logout()">Cerrar sesión</button>

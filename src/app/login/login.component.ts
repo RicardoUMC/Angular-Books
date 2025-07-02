@@ -26,7 +26,7 @@ export class LoginComponent {
       const formValue = this.loginForm.value;
 
       this.http
-        .post<any>('http://localhost:PORT/api/login', formValue)
+        .post<any>('http://localhost:8080/api/login', formValue)
         .subscribe({
         next: (response) => {
           console.log('Login exitoso:', response);

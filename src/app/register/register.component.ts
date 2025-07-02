@@ -51,7 +51,7 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       const formValue = this.registerForm.value;
       this.http
-        .post<any>('http://localhost:PORT/api/register', formValue)
+        .post<any>('http://localhost:8080/api/register', formValue)
         .subscribe({
           next: (response) => {
             console.log('Registro exitoso:', response);

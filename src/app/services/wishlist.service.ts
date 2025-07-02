@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WishlistService {
   private apiUrl = 'http://localhost:8080/api/wishlist';
@@ -12,18 +12,28 @@ export class WishlistService {
   constructor(private http: HttpClient) {}
 
   get(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.apiUrl);
+    const userId = localStorage.getItem('userId');
+    return this.http.get<Book[]>(`${this.apiUrl}?userId=${userId}`);
   }
 
   add(book: Book): Observable<any> {
-    return this.http.post(this.apiUrl, book);
+    const userId = localStorage.getItem('userId');
+    const payload = {
+      ...book,
+      userId: Number(userId),
+    };
+    return this.http.post(this.apiUrl, payload);
   }
 
   remove(bookId: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${bookId}`);
+    const userId = localStorage.getItem('userId');
+    return this.http.delete(`${this.apiUrl}/${bookId}?userId=${userId}`);
   }
 
   check(bookId: number): Observable<{ isPresent: boolean }> {
-    return this.http.get<{ isPresent: boolean }>(`${this.apiUrl}/check/${bookId}`);
+    const userId = localStorage.getItem('userId');
+    return this.http.get<{ isPresent: boolean }>(
+      `${this.apiUrl}/check/${bookId}?userId=${userId}`
+    );
   }
 }

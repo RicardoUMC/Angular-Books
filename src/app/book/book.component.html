@@ -26,18 +26,18 @@
     </div>
     <div>
       <div>
-        <button *ngIf="!isInCollection">
+        <button *ngIf="!isInCollection" (click)="addToCollection()">
           Agregar a mis libros
         </button>
-        <button *ngIf="isInCollection">
+        <button *ngIf="isInCollection" (click)="removeFromCollection()">
           Quitar de mis libros
         </button>
       </div>
       <div>
-        <button *ngIf="!isInWishlist">
+        <button *ngIf="!isInWishlist" (click)="addToWishlist()">
           Agregar a deseados
         </button>
-        <button *ngIf="isInWishlist">
+        <button *ngIf="isInWishlist" (click)="removeFromWishlist()">
           Quitar de deseados
         </button>
       </div>
